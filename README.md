@@ -6,10 +6,14 @@ markdown-html-form
     <td>Author:</td>
     <td>Justin McCandless (www.justinmccandless.com)</td>
   </tr>
-  <!-- <tr>
-    <td>Demo:</td>
-    <td>http://www.justinmccandless.com/demos/jQuery-Open-Carousel/index.html</td>
+  <tr>
+    <td>Simple Demo:</td>
+    <td>http://justinmccandless.com/demos/markdown-html-form/examples/simple/index.html</td>
+  <tr>
+    <td>Demo with Hallo:</td>
+    <td>http://justinmccandless.com/demos/markdown-html-form/examples/hallo/index.html</td>
   </tr>
+  <!--
   <tr>
     <td>Latest Blog Post:</td>
     <td>http://www.justinmccandless.com/blog/Open+Source+jQuery+Carousel</td>
@@ -75,9 +79,13 @@ Check out the examples in the `examples/` folder to see some working demos.  Bot
 
 ### Simple Example
 
+Live at: http://justinmccandless.com/demos/markdown-html-form/examples/simple/index.html
+
 The simple example is probably the most basic use case of the project.  Markdown entered into a form shows a preview in realtime, and on submission of the form submits the converted html via a hidden input.
 
 ### Hallo Example
+
+Live at: http://justinmccandless.com/demos/markdown-html-form/examples/hallo/index.html
 
 This example makes use of [Hallo](https://github.com/bergie/hallo) to make the live preview of the markdown editable.  This basically gives you a markdown editor and a WYSIWYG editor kept in sync.
 
