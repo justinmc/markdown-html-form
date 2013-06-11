@@ -1,8 +1,6 @@
 markdown-html-form
 ================
 
-The purpose of this project is to create the most simple and efficient way to write blog posts and other content on the web.  This is accomplished through an easy to setup markdown to html form element and preview.
-
 <table>
   <tr>
     <td>Author:</td>
@@ -18,21 +16,23 @@ The purpose of this project is to create the most simple and efficient way to wr
   </tr> -->
   <tr>
     <td>Minimum Dependecies:</td>
-    <td>[jQuery](http://www.jquery.com)</td>
+    <td><a href="http://www.jquery.com">jQuery</a></td>
   </tr>
   <tr>
     <td></td>
-    <td>[Showdown](https://github.com/coreyti/showdown)</td>
+    <td><a href="https://github.com/coreyti/showdown">Showdown</a></td>
   </tr>
   <tr>
-    <td>Two-way Dependecies (with Hallojs):</td>
-    <td>[to-markdown](https://raw.github.com/domchristie/to-markdown)/td>
+    <td>Two-way Dependecies (with Hallo):</td>
+    <td><a href="https://raw.github.com/domchristie/to-markdown">to-markdown</a><td>
   </tr>
   <tr>
     <td></td>
-    <td>[Hallojs](https://github.com/bergie/hallo) and all of its dependencies</td>
+    <td><a href="https://github.com/bergie/hallo">Hallo</a> and all of its dependencies</td>
   </tr>
 </table>
+
+The purpose of this project is to create the most simple and efficient way to write blog posts and other content on the web.  This is accomplished through an easy to setup markdown to html form element and preview.
 
 ## Usage
 
@@ -44,11 +44,14 @@ In order to use this project, you must have at least one form with the `.mdhtmlf
         <!-- Edit markdown here! -->
         <textarea class="mdhtmlform-md">## Write markdown in the textarea!</textarea>
         <br /><br />
+
         <!-- Display converted html here! -->
         <div class="mdhtmlform-html"></div>
+        <br /><br />
+
         <!-- And insert converted html for submission here. -->
         <textarea class="mdhtmlform-html" style="display: none;"></textarea>
-        <br /><br />
+
         <button class="submit">Submit</button>
     </form>
 
@@ -70,9 +73,9 @@ Check out the examples in the `examples/` folder to see some working demos.  Bot
 
 The simple example is probably the most basic use case of the project.  Markdown entered into a form shows a preview in realtime, and on submission of the form submits the converted html via a hidden input.
 
-### Hallojs Example
+### Hallo Example
 
-This example makes use of [hallojs](https://github.com/bergie/hallo) to make the live preview of the markdown editable.  This basically gives you a markdown editor and a WYSIWYG editor kept in sync.
+This example makes use of [Hallo](https://github.com/bergie/hallo) to make the live preview of the markdown editable.  This basically gives you a markdown editor and a WYSIWYG editor kept in sync.
 
 ## License
 
