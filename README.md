@@ -40,20 +40,22 @@ The purpose of this project is to create the most simple and efficient way to wr
 
 In order to use this project, you must have at least one form with the `.mdhtmlform` class on it.  The direct children of this form will be scanned for elements to sync markdown to (`.mdhtmlform-markdown`) and elements to sync html to (`.mdhtmlform-html`).  So a typical setup might look like this:
 
-    <form class="mdhtmlform">
-        <!-- Edit markdown here! -->
-        <textarea class="mdhtmlform-md">## Write markdown in the textarea!</textarea>
-        <br /><br />
+```html
+<form class="mdhtmlform">
+    <!-- Edit markdown here! -->
+    <textarea class="mdhtmlform-md">## Write markdown in the textarea!</textarea>
+    <br /><br />
 
-        <!-- Display converted html here! -->
-        <div class="mdhtmlform-html"></div>
-        <br /><br />
+    <!-- Display converted html here! -->
+    <div class="mdhtmlform-html"></div>
+    <br /><br />
 
-        <!-- And insert converted html for submission here. -->
-        <textarea class="mdhtmlform-html" style="display: none;"></textarea>
+    <!-- And insert converted html for submission here. -->
+    <textarea class="mdhtmlform-html" style="display: none;"></textarea>
 
-        <button class="submit">Submit</button>
-    </form>
+    <button class="submit">Submit</button>
+</form>
+```
 
 ### Javascript Setup
 
@@ -63,7 +65,9 @@ Simply include the `mdhtmlform.js` file found in the `src/` folder after jQuery 
 
 The project will initialize itself and start working automatically, but if you want to initialize it yourself, simply call its constructor and pass in the form you're using:
 
-    new MdHtmlForm($("form#yourForm"))
+```coffeescript
+new MdHtmlForm($("form#yourForm"))
+```
 
 ## Examples
 
