@@ -13,11 +13,6 @@ markdown-html-form
     <td>Demo with Hallo:</td>
     <td>http://justinmccandless.com/demos/markdown-html-form/examples/hallo/index.html</td>
   </tr>
-  <!--
-  <tr>
-    <td>Latest Blog Post:</td>
-    <td>http://www.justinmccandless.com/blog/Open+Source+jQuery+Carousel</td>
-  </tr> -->
   <tr>
     <td>Minimum Dependecies:</td>
     <td><a href="http://www.jquery.com">jQuery</a></td>
@@ -28,7 +23,7 @@ markdown-html-form
   </tr>
   <tr>
     <td>Two-way Dependecies (with Hallo):</td>
-    <td><a href="https://raw.github.com/domchristie/to-markdown">to-markdown</a><td>
+    <td><a href="https://github.com/domchristie/to-markdown">to-markdown</a><td>
   </tr>
   <tr>
     <td></td>
