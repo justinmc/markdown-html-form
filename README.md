@@ -18,10 +18,6 @@ The purpose of this project is to create the most simple and efficient way to wr
   </tr> -->
   <tr>
     <td>Minimum Dependecies:</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
     <td>[jQuery](http://www.jquery.com)</td>
   </tr>
   <tr>
@@ -29,11 +25,7 @@ The purpose of this project is to create the most simple and efficient way to wr
     <td>[Showdown](https://github.com/coreyti/showdown)</td>
   </tr>
   <tr>
-    <td>Minimum Dependecies:</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
+    <td>Two-way Dependecies (with Hallojs):</td>
     <td>[to-markdown](https://raw.github.com/domchristie/to-markdown)/td>
   </tr>
   <tr>
