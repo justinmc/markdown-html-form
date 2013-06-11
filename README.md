@@ -3,17 +3,44 @@ markdown-html-form
 
 The purpose of this project is to create the most simple and efficient way to write blog posts and other content on the web.  This is accomplished through an easy to setup markdown to html form element and preview.
 
-## Dependencies
-
-### Minimum
-
-* [jQuery 1.6+](http://www.jquery.com)
-* [Showdown](https://github.com/coreyti/showdown)
-
-### With Hallojs
-
-* [to-markdown](https://raw.github.com/domchristie/to-markdown)
-* [Hallojs](https://github.com/bergie/hallo) and all of its dependencies
+<table>
+  <tr>
+    <td>Author:</td>
+    <td>Justin McCandless (www.justinmccandless.com)</td>
+  </tr>
+  <!-- <tr>
+    <td>Demo:</td>
+    <td>http://www.justinmccandless.com/demos/jQuery-Open-Carousel/index.html</td>
+  </tr>
+  <tr>
+    <td>Latest Blog Post:</td>
+    <td>http://www.justinmccandless.com/blog/Open+Source+jQuery+Carousel</td>
+  </tr> -->
+  <tr>
+    <td>Minimum Dependecies:</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>[jQuery](http://www.jquery.com)</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>[Showdown](https://github.com/coreyti/showdown)</td>
+  </tr>
+  <tr>
+    <td>Minimum Dependecies:</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>[to-markdown](https://raw.github.com/domchristie/to-markdown)/td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>[Hallojs](https://github.com/bergie/hallo) and all of its dependencies</td>
+  </tr>
+</table>
 
 ## Usage
 
@@ -21,17 +48,17 @@ The purpose of this project is to create the most simple and efficient way to wr
 
 In order to use this project, you must have at least one form with the `.mdhtmlform` class on it.  The direct children of this form will be scanned for elements to sync markdown to (`.mdhtmlform-markdown`) and elements to sync html to (`.mdhtmlform-html`).  So a typical setup might look like this:
 
-  <form class="mdhtmlform">
-      <!-- Edit markdown here! -->
-      <textarea class="mdhtmlform-md">## Write markdown in the textarea!</textarea>
-      <br /><br />
-      <!-- Display converted html here! -->
-      <div class="mdhtmlform-html"></div>
-      <!-- And insert converted html for submission here. -->
-      <textarea class="mdhtmlform-html" style="display: none;"></textarea>
-      <br /><br />
-      <button class="submit">Submit</button>
-  </form>
+    <form class="mdhtmlform">
+        <!-- Edit markdown here! -->
+        <textarea class="mdhtmlform-md">## Write markdown in the textarea!</textarea>
+        <br /><br />
+        <!-- Display converted html here! -->
+        <div class="mdhtmlform-html"></div>
+        <!-- And insert converted html for submission here. -->
+        <textarea class="mdhtmlform-html" style="display: none;"></textarea>
+        <br /><br />
+        <button class="submit">Submit</button>
+    </form>
 
 ### Javascript Setup
 
