@@ -105,7 +105,7 @@ This examples shows how to sync in both directions, with a raw HTML textarea syn
 
 ### Multiple Example
 
-Live at: http://justinmccandless.com/demos/markdown-html-form/examples/multipe/index.html
+Live at: http://justinmccandless.com/demos/markdown-html-form/examples/multiple/index.html
 
 This examples shows how to get two independent instances of the project working on the same page.  Convert two differnt Markdown textareas to two differnt HTML previews.
 
