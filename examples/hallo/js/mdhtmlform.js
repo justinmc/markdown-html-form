@@ -24,15 +24,27 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
     MdHtmlForm.prototype.md = "";
 
+    MdHtmlForm.prototype.objMd = null;
+
+    MdHtmlForm.prototype.group = "";
+
+    MdHtmlForm.prototype.dataGroup = "mdhtmlform-group";
+
     MdHtmlForm.prototype.selHtml = ".mdhtmlform-html";
 
     MdHtmlForm.prototype.selMd = ".mdhtmlform-md";
 
     function MdHtmlForm(obj) {
       var me;
-      this.md = $(this.selMd).val();
+      this.objMd = obj;
+      this.group = $(this.objMd).data(this.dataGroup);
+      if (this.group != null) {
+        this.selHtml = this.selHtml + "[data-" + this.dataGroup + "=" + this.group + "]";
+        this.selMd = this.selMd + "[data-" + this.dataGroup + "=" + this.group + "]";
+      }
+      this.md = $(this.objMd).val();
       me = this;
-      $(this.selMd).on("keyup", function(e) {
+      $(this.objMd).on("keyup", function(e) {
         return me.updateMdToHtml();
       });
       $(this.selHtml).bind('hallomodified', function(event, data) {
@@ -42,7 +54,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     }
 
     MdHtmlForm.prototype.updateMdToHtml = function() {
-      this.md = $(this.selMd).val();
+      this.md = $(this.objMd).val();
       this.convertMdToHtml();
       return this.renderHtml();
     };
@@ -77,7 +89,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     };
 
     MdHtmlForm.prototype.renderMd = function() {
-      $(this.selMd).val(this.md);
+      $(this.objMd).val(this.md);
       return this.renderTextarea();
     };
 
@@ -90,7 +102,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   })();
 
   $(function() {
-    return $("form.mdhtmlform").each(function() {
+    return $(".mdhtmlform-md").each(function() {
       return new MdHtmlForm(this);
     });
   });

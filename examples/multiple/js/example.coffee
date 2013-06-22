@@ -4,16 +4,6 @@
 ###
 
 $ ->
-  # Initialize hallojs
-  $("div.mdhtmlform-html").hallo
-    plugins: {
-      'halloformat': {},
-      'halloheadings': {},
-      'hallolists': {},
-      'halloreundo': {}
-    }
-    toolbar: 'halloToolbarFixed'
-
   # Add a click event for the submit button
   $("button.submit").on "click", (e) ->
     e.preventDefault()

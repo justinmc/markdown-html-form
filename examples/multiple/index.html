@@ -28,13 +28,22 @@
             <h1>Markdown HTML Form</h1>
             <br />
             <form>
-                <!-- Edit markdown here! -->
-                <textarea class="mdhtmlform-md">## Write markdown in the textarea!</textarea>
+                <!-- First group markdown input -->
+                <textarea class="mdhtmlform-md" data-mdhtmlform-group="0">## Write markdown in the textarea!</textarea>
                 <br /><br />
-                <!-- Display converted html here! -->
-                <div class="mdhtmlform-html"></div>
-                <!-- And insert converted html for submission here... -->
-                <textarea class="mdhtmlform-html" style="display: none;"></textarea>
+                <!-- First group html display -->
+                <div class="mdhtmlform-html" data-mdhtmlform-group="0"></div>
+                <!-- First group html submissionn -->
+                <textarea class="mdhtmlform-html" data-mdhtmlform-group="0" style="display: none;"></textarea>
+                <br /><br />
+                <br /><br />
+                <!-- Second group markdown input -->
+                <textarea class="mdhtmlform-md" data-mdhtmlform-group="1">## You can write markdown here too, same form!</textarea>
+                <br /><br />
+                <!-- Second group html display -->
+                <div class="mdhtmlform-html" data-mdhtmlform-group="1"></div>
+                <!-- Second group html submissionn -->
+                <textarea class="mdhtmlform-html" data-mdhtmlform-group="1" style="display: none;"></textarea>
                 <br /><br />
                 <button class="submit">Submit</button>
             </form>

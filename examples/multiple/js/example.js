@@ -9,15 +9,6 @@
 (function() {
 
   $(function() {
-    $("div.mdhtmlform-html").hallo({
-      plugins: {
-        'halloformat': {},
-        'halloheadings': {},
-        'hallolists': {},
-        'halloreundo': {}
-      },
-      toolbar: 'halloToolbarFixed'
-    });
     return $("button.submit").on("click", function(e) {
       var html;
       e.preventDefault();

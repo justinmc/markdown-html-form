@@ -22,12 +22,8 @@ markdown-html-form
     <td><a href="https://github.com/coreyti/showdown">Showdown</a></td>
   </tr>
   <tr>
-    <td>Two-way Dependecies (with Hallo):</td>
+    <td>Two-way Dependecies:</td>
     <td><a href="https://github.com/domchristie/to-markdown">to-markdown</a><td>
-  </tr>
-  <tr>
-    <td></td>
-    <td><a href="https://github.com/bergie/hallo">Hallo</a> and all of its dependencies</td>
   </tr>
 </table>
 
@@ -37,46 +33,75 @@ The purpose of this project is to create the most simple and efficient way to wr
 
 ### HTML Setup
 
-In order to use this project, you must have at least one form with the `.mdhtmlform` class on it.  The direct children of this form will be scanned for elements to sync markdown to (`.mdhtmlform-markdown`) and elements to sync html to (`.mdhtmlform-html`).  So a typical setup might look like this:
+In order to use this project, you must have at least one textfield tag with the `.mdhtmlform-md` class on it.  All markdown input into this field will be converted to html and kept in sync with with any divs or textfields with the `.mdhtmlform-html` on them.  So a typical setup might look like this:
 
 ```html
-<form class="mdhtmlform">
-    <!-- Edit markdown here! -->
-    <textarea class="mdhtmlform-md">## Write markdown in the textarea!</textarea>
-    <br /><br />
+<!-- Edit markdown here! -->
+<textarea class="mdhtmlform-md">## Write markdown in the textarea!</textarea>
+<br /><br />
 
-    <!-- Display converted html here! -->
-    <div class="mdhtmlform-html"></div>
-    <br /><br />
+<!-- Display converted html here! -->
+<div class="mdhtmlform-html"></div>
+<br /><br />
 
-    <!-- And insert converted html for submission here. -->
-    <textarea class="mdhtmlform-html" style="display: none;"></textarea>
-
-    <button class="submit">Submit</button>
-</form>
+<!-- And insert converted html for submission here. -->
+<textarea class="mdhtmlform-html" style="display: none;"></textarea>
 ```
 
 ### Javascript Setup
 
 Simply include the `mdhtmlform.js` file found in the `src/` folder after jQuery and Showdown, and you're good to go.
 
+### Two-way Conversion
+
+I've shown how to sync the Markdown to an HTML preview div or textfield, but if you also want the HTML textfield to sync back to Markdown then that's easy too.  Just make sure you also include [to-markdown](https://github.com/domchristie/to-markdown) before mdhtmlform and the HTML will sync back automatically.  Don't forget your HTML textfield still needs the `mdhtmlform-html` class.
+
+### Multiple Instances
+
+If you need multiple Markdown textfields syncing their HTML to separate elements on the same page, this is also easily accomplished.  Just add a unique `data-mdhtmlform-group` data attribute to the elements of each instance you need.  Here's an example:
+
+```html
+<!-- The first Markdown input -->
+<textarea class="mdhtmlform-md" data-mdhtmlform-group="0">## Write markdown in the textarea!</textarea>
+<br /><br />
+
+<!-- HTML preview of whatever is in the first Markdown input -->
+<div class="mdhtmlform-html" data-mdhtml-group="0"></div>
+<br /><br />
+
+<!-- The second Markdown input -->
+<textarea class="mdhtmlform-md" data-mdhtmlform-group="1">## Write completely different markdown in this textarea!</textarea>
+<br /><br />
+
+<!-- HTML preview of whatever is in the second Markdown input -->
+<div class="mdhtmlform-html" data-mdhtml-group="1"></div>
+```
+
+Check out the `examples/multiple/` folder for a full working example.
+
 ### Initialization
 
-The project will initialize itself and start working automatically, but if you want to initialize it yourself, simply call its constructor and pass in the form you're using:
+The project will initialize itself and start working automatically when jQuery is ready, but if you want to initialize it yourself at a differnt time, simply call its constructor and pass in the Markdown textfield you're using:
 
 ```coffeescript
-new MdHtmlForm($("form#yourForm"))
+new MdHtmlForm($("textfield.mdhtmlform-md"))
 ```
 
 ## Examples
 
-Check out the examples in the `examples/` folder to see some working demos.  Both make use of [HTML5 Boilerplate](http://www.html5boilerplate.com) for their starting points.
+Check out the examples in the `examples/` folder to see some working demos.  All make use of [HTML5 Boilerplate](http://www.html5boilerplate.com) for their starting points.
 
 ### Simple Example
 
 Live at: http://justinmccandless.com/demos/markdown-html-form/examples/simple/index.html
 
 The simple example is probably the most basic use case of the project.  Markdown entered into a form shows a preview in realtime, and on submission of the form submits the converted html via a hidden input.
+
+### Multiple Example
+
+Live at: http://justinmccandless.com/demos/markdown-html-form/examples/multipe/index.html
+
+This examples shows how to get two independent instances of the project working on the same page.  Convert two differnt Markdown textfields to two differnt HTML previews.
 
 ### Hallo Example
 

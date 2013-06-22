@@ -19,17 +19,33 @@ class MdHtmlForm
   html: ""
   md: ""
 
-  # Selectors for the necessary elements
+  # The anchor md object for this mdhtmlform group
+  objMd: null
+
+  # The id of this group
+  group: ""
+
+  # Configuration
+  dataGroup: "mdhtmlform-group"
   selHtml: ".mdhtmlform-html"
   selMd: ".mdhtmlform-md"
 
   constructor: (obj) ->
+    # Save a reference to the md object
+    @objMd = obj
+
+    # Get the group id, if it was given, and update the selectors with it
+    @group = $(@objMd).data(@dataGroup)
+    if @group?
+        @selHtml = @selHtml + "[data-" + @dataGroup + "=" + @group + "]"
+        @selMd = @selMd + "[data-" + @dataGroup + "=" + @group + "]"
+
     # Get the initial md
-    @md = $(@selMd).val()
+    @md = $(@objMd).val()
 
     # On Md keyup, rerender the html
     me = @
-    $(@selMd).on "keyup", (e) ->
+    $(@objMd).on "keyup", (e) ->
       me.updateMdToHtml()
 
     # On Html keyup (if using hallojs), rerender the markdown
@@ -41,7 +57,7 @@ class MdHtmlForm
 
   # Get the md from the view, convert it to html, and rerender
   updateMdToHtml: () ->
-    @md = $(@selMd).val()
+    @md = $(@objMd).val()
     @convertMdToHtml()
     @renderHtml()
 
@@ -73,7 +89,7 @@ class MdHtmlForm
   
   # Render the current md in the view
   renderMd: () ->
-    $(@selMd).val(@md)
+    $(@objMd).val(@md)
     @renderTextarea()
 
   # Render the html into a form textarea
@@ -81,7 +97,7 @@ class MdHtmlForm
     $("textarea" + @selHtml).html(@html)
 
 $ ->
-  # Initialize MdHtmlForm
-  $("form.mdhtmlform").each () ->
+  # Initialize MdHtmlForm on every Markdown input
+  $(".mdhtmlform-md").each () ->
     new MdHtmlForm(this)
 
