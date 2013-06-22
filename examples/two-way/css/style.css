@@ -1,0 +1,28 @@
+/*
+  This css is only for this example
+*/
+
+body {
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+textarea {
+  width: 100%;
+  min-height: 100px;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+  div.mdhtmlform-html {
+    width: 100%;
+    padding: 12px;
+    border: 1px #afafaf solid;
+  }

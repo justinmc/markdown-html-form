@@ -8,9 +8,13 @@ $ ->
   $("button.submit").on "click", (e) ->
     e.preventDefault()
 
-    # Get the html from the hidden form input
-    html = $("textarea.mdhtmlform-html").val()
+    # Get the html from the hidden form input and alert it, for each input
+    count = 1
+    $("textarea.mdhtmlform-html").each () ->
+      html = $(this).val()
 
-    # Alert it to the user
-    alert("Easily keep the raw html in a hidden form input and get it on submission: " + html)
+      # Alert it to the user
+      alert("You can submit multiple textareas, here is # " + count + ": " + html)
+
+      count++
 

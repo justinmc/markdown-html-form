@@ -10,10 +10,15 @@
 
   $(function() {
     return $("button.submit").on("click", function(e) {
-      var html;
+      var count;
       e.preventDefault();
-      html = $("textarea.mdhtmlform-html").val();
-      return alert("Easily keep the raw html in a hidden form input and get it on submission: " + html);
+      count = 1;
+      return $("textarea.mdhtmlform-html").each(function() {
+        var html;
+        html = $(this).val();
+        alert("You can submit multiple textareas, here is # " + count + ": " + html);
+        return count++;
+      });
     });
   });
 

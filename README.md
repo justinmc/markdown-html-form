@@ -33,7 +33,7 @@ The purpose of this project is to create the most simple and efficient way to wr
 
 ### HTML Setup
 
-In order to use this project, you must have at least one textfield tag with the `.mdhtmlform-md` class on it.  All markdown input into this field will be converted to html and kept in sync with with any divs or textfields with the `.mdhtmlform-html` on them.  So a typical setup might look like this:
+In order to use this project, you must have at least one textarea tag with the `.mdhtmlform-md` class on it.  All markdown input into this field will be converted to html and kept in sync with with any divs or textareas with the `.mdhtmlform-html` on them.  So a typical setup might look like this:
 
 ```html
 <!-- Edit markdown here! -->
@@ -54,11 +54,11 @@ Simply include the `mdhtmlform.js` file found in the `src/` folder after jQuery 
 
 ### Two-way Conversion
 
-I've shown how to sync the Markdown to an HTML preview div or textfield, but if you also want the HTML textfield to sync back to Markdown then that's easy too.  Just make sure you also include [to-markdown](https://github.com/domchristie/to-markdown) before mdhtmlform and the HTML will sync back automatically.  Don't forget your HTML textfield still needs the `mdhtmlform-html` class.
+I've shown how to sync the Markdown to an HTML preview div or textarea, but if you also want the HTML textarea to sync back to Markdown then that's easy too.  Just make sure you also include [to-markdown](https://github.com/domchristie/to-markdown) before mdhtmlform and the HTML will sync back automatically.  Don't forget your HTML textarea still needs the `mdhtmlform-html` class.  Check out `examples/two-way` for an example.
 
 ### Multiple Instances
 
-If you need multiple Markdown textfields syncing their HTML to separate elements on the same page, this is also easily accomplished.  Just add a unique `data-mdhtmlform-group` data attribute to the elements of each instance you need.  Here's an example:
+If you need multiple Markdown textareas syncing their HTML to separate elements on the same page, this is also easily accomplished.  Just add a unique `data-mdhtmlform-group` data attribute to the elements of each instance you need.  Here's an example:
 
 ```html
 <!-- The first Markdown input -->
@@ -81,10 +81,10 @@ Check out the `examples/multiple/` folder for a full working example.
 
 ### Initialization
 
-The project will initialize itself and start working automatically when jQuery is ready, but if you want to initialize it yourself at a differnt time, simply call its constructor and pass in the Markdown textfield you're using:
+The project will initialize itself and start working automatically when jQuery is ready, but if you want to initialize it yourself at a differnt time, simply call its constructor and pass in the Markdown textarea you're using:
 
 ```coffeescript
-new MdHtmlForm($("textfield.mdhtmlform-md"))
+new MdHtmlForm($("textarea.mdhtmlform-md"))
 ```
 
 ## Examples
@@ -97,11 +97,17 @@ Live at: http://justinmccandless.com/demos/markdown-html-form/examples/simple/in
 
 The simple example is probably the most basic use case of the project.  Markdown entered into a form shows a preview in realtime, and on submission of the form submits the converted html via a hidden input.
 
+### Two-way Example
+
+Live at: http://justinmccandless.com/demos/markdown-html-form/examples/two-way/index.html
+
+This examples shows how to sync in both directions, with a raw HTML textarea syncing with a Markdown textarea and a preview div.
+
 ### Multiple Example
 
 Live at: http://justinmccandless.com/demos/markdown-html-form/examples/multipe/index.html
 
-This examples shows how to get two independent instances of the project working on the same page.  Convert two differnt Markdown textfields to two differnt HTML previews.
+This examples shows how to get two independent instances of the project working on the same page.  Convert two differnt Markdown textareas to two differnt HTML previews.
 
 ### Hallo Example
 

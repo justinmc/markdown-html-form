@@ -29,12 +29,13 @@
             <br />
             <form>
                 <!-- Edit markdown here! -->
-                <textarea class="mdhtmlform-md">## Write markdown in the textarea!</textarea>
+                <textarea class="mdhtmlform-md">## Write markdown or html in the textareas!</textarea>
+                <br /><br />
+                <!-- Edit html here! -->
+                <textarea class="mdhtmlform-html"></textarea>
                 <br /><br />
                 <!-- Display converted html here! -->
                 <div class="mdhtmlform-html"></div>
-                <!-- And insert converted html for submission here... -->
-                <textarea class="mdhtmlform-html" style="display: none;"></textarea>
                 <br /><br />
                 <button class="submit">Submit</button>
             </form>
@@ -49,6 +50,7 @@
 
         <!-- mdhtmlform Dependencies -->
         <script src="js/vendor/showdown.js"></script> <!-- Include Showdown before mdhtmlform! -->
+        <script src="js/vendor/to-markdown.js"></script> <!-- Include to-markdown before mdhtmlform -->
         <script src="js/mdhtmlform.js"></script> <!-- The main mdhtmlform file -->
         <!-- end mdhtmlform Dependencies -->
         

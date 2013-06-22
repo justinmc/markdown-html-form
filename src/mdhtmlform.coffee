@@ -48,9 +48,13 @@ class MdHtmlForm
     $(@objMd).on "keyup", (e) ->
       me.updateMdToHtml()
 
-    # On Html keyup (if using hallojs), rerender the markdown
-    $(@selHtml).bind 'hallomodified', (event, data) ->
-      me.updateHtmlToMd()
+    # On Html textarea keyup, rerender the markdown
+    $("textarea" + @selHtml).bind "keyup", (e) ->
+      me.updateHtmlToMd(false)
+
+    # On Hallojs keyup, rerender the markdown
+    $(@selHtml).bind "hallomodified", (event, data) ->
+      me.updateHtmlToMd(true)
 
     # Render the md content as html initially
     @updateMdToHtml()
@@ -59,13 +63,17 @@ class MdHtmlForm
   updateMdToHtml: () ->
     @md = $(@objMd).val()
     @convertMdToHtml()
-    @renderHtml()
+    @render(false)
 
   # Get the html from the view, convert it to md, and rerender
-  updateHtmlToMd: () ->
-    @html = $(@selHtml).html()
+  updateHtmlToMd: (ignoreHallo) ->
+    # Get the html from a Hallo first, otherwise a regular textarea
+    if $("div" + @selHtml).hallo?
+      @html = $("div" + @selHtml).html()
+    else
+      @html = $("textarea" + @selHtml).val()
     @convertHtmlToMd()
-    @renderMd()
+    @render(ignoreHallo)
 
   # Convert the md to html
   convertMdToHtml: () ->
@@ -82,19 +90,17 @@ class MdHtmlForm
     else
       console.log "Error: mdhtmlform: to-markdown not properly included"
 
-  # Render the current html in the view
-  renderHtml: () ->
-    $("div" + @selHtml).html(@html)
-    @renderTextarea()
+  # Render the html and md
+  render: (ignoreHallo) ->
+    # Render the html preview div
+    if !$("div" + @selHtml).hallo? or !ignoreHallo
+      $("div" + @selHtml).html(@html)
   
-  # Render the current md in the view
-  renderMd: () ->
+    # Render the current md in the view
     $(@objMd).val(@md)
-    @renderTextarea()
 
-  # Render the html into a form textarea
-  renderTextarea: () ->
-    $("textarea" + @selHtml).html(@html)
+    # Render the html into a form textarea
+    $("textarea" + @selHtml).val(@html)
 
 $ ->
   # Initialize MdHtmlForm on every Markdown input

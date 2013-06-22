@@ -47,8 +47,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
       $(this.objMd).on("keyup", function(e) {
         return me.updateMdToHtml();
       });
-      $(this.selHtml).bind('hallomodified', function(event, data) {
-        return me.updateHtmlToMd();
+      $("textarea" + this.selHtml).bind("keyup", function(e) {
+        return me.updateHtmlToMd(false);
+      });
+      $(this.selHtml).bind("hallomodified", function(event, data) {
+        return me.updateHtmlToMd(true);
       });
       this.updateMdToHtml();
     }
@@ -56,13 +59,17 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     MdHtmlForm.prototype.updateMdToHtml = function() {
       this.md = $(this.objMd).val();
       this.convertMdToHtml();
-      return this.renderHtml();
+      return this.render(false);
     };
 
-    MdHtmlForm.prototype.updateHtmlToMd = function() {
-      this.html = $(this.selHtml).html();
+    MdHtmlForm.prototype.updateHtmlToMd = function(ignoreHallo) {
+      if ($("div" + this.selHtml).hallo != null) {
+        this.html = $("div" + this.selHtml).html();
+      } else {
+        this.html = $("textarea" + this.selHtml).val();
+      }
       this.convertHtmlToMd();
-      return this.renderMd();
+      return this.render(ignoreHallo);
     };
 
     MdHtmlForm.prototype.convertMdToHtml = function() {
@@ -83,18 +90,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
       }
     };
 
-    MdHtmlForm.prototype.renderHtml = function() {
-      $("div" + this.selHtml).html(this.html);
-      return this.renderTextarea();
-    };
-
-    MdHtmlForm.prototype.renderMd = function() {
+    MdHtmlForm.prototype.render = function(ignoreHallo) {
+      if (!($("div" + this.selHtml).hallo != null) || !ignoreHallo) {
+        $("div" + this.selHtml).html(this.html);
+      }
       $(this.objMd).val(this.md);
-      return this.renderTextarea();
-    };
-
-    MdHtmlForm.prototype.renderTextarea = function() {
-      return $("textarea" + this.selHtml).html(this.html);
+      return $("textarea" + this.selHtml).val(this.html);
     };
 
     return MdHtmlForm;
