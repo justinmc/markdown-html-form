@@ -37,24 +37,35 @@ class MdHtmlForm
     # Get the group id, if it was given, and update the selectors with it
     @group = $(@objMd).data(@dataGroup)
     if @group?
-        @selHtml = @selHtml + "[data-" + @dataGroup + "=" + @group + "]"
-        @selMd = @selMd + "[data-" + @dataGroup + "=" + @group + "]"
+      @selHtml = @selHtml + "[data-" + @dataGroup + "=" + @group + "]"
+      @selMd = @selMd + "[data-" + @dataGroup + "=" + @group + "]"
 
     # Get the initial md
     @md = $(@objMd).val()
 
     # On Md keyup, rerender the html
-    me = @
-    $(@objMd).on "keyup", (e) ->
-      me.updateMdToHtml()
+    $inp = $(@objMd)
+    if "oninput" of $inp[0]  # do we support the HTML 5 input event?
+      $inp[0].addEventListener "input", (=>
+        @updateMdToHtml()
+      ), false
+    else
+      # IE 8 doesn't support the oninput event so we fall back to keyup and paste
+      # using a jquery event handler here in order to avoid having to use attachEvent in IE
+      $inp.on "keyup paste", =>
+        # if a paste event is what we got we'll let the event loop go so that our paste has a chance to happen
+          setTimeout =>
+            @updateMdToHtml()
+          , 0
+          return
 
     # On Html textarea keyup, rerender the markdown
-    $("textarea" + @selHtml).bind "keyup", (e) ->
-      me.updateHtmlToMd(false)
+    $("textarea" + @selHtml).bind "keyup", (e) =>
+      @updateHtmlToMd(false)
 
     # On Hallojs keyup, rerender the markdown
-    $(@selHtml).bind "hallomodified", (event, data) ->
-      me.updateHtmlToMd(true)
+    $(@selHtml).bind "hallomodified", (event, data) =>
+      @updateHtmlToMd(true)
 
     # Render the md content as html initially
     @updateMdToHtml()
@@ -95,7 +106,7 @@ class MdHtmlForm
     # Render the html preview div
     if !$("div" + @selHtml).hallo? or !ignoreHallo
       $("div" + @selHtml).html(@html)
-  
+
     # Render the current md in the view
     $(@objMd).val(@md)
 
