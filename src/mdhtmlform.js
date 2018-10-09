@@ -88,8 +88,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
     MdHtmlForm.prototype.convertMdToHtml = function() {
       var converter;
-      if (window.hasOwnProperty("Showdown")) {
-        converter = new Showdown.converter();
+      if (window.hasOwnProperty("showdown")) {
+        converter = new showdown.Converter();
         return this.html = converter.makeHtml(this.md);
       } else {
         return console.log("Error: mdhtmlform: Showdown not properly included");
